@@ -1,3 +1,5 @@
+let card_array = [].slice.call(document.querySelectorAll(".card"));
+let deck = document.querySelector('.deck');
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -15,5 +17,11 @@ function shuffle(array) {
     return array;
 }
 
+var shuffle_cards = shuffle(card_array);
 
-
+for (var i= 0; i < shuffle_cards.length; i++){ 
+    var li = shuffle_cards[i]
+    var icon = shuffle_cards[i].querySelector('i');
+    li.id=icon.classList[1];
+    deck.appendChild(li);
+}
