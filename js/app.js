@@ -17,11 +17,14 @@ function shuffle(array) {
     return array;
 }
 
-var shuffle_cards = shuffle(card_array);
-
-for (var i= 0; i < shuffle_cards.length; i++){ 
-    var li = shuffle_cards[i]
-    var icon = shuffle_cards[i].querySelector('i');
-    li.id=icon.classList[1];
-    deck.appendChild(li);
+window.onload = init();
+function init(){
+    var shuffle_cards = shuffle(card_array);
+    
+    for (var i= 0; i < shuffle_cards.length; i++){ 
+        var li = shuffle_cards[i]
+        var icon = shuffle_cards[i].querySelector('i');
+        li.id=icon.classList[1];
+        deck.appendChild(li);
+    }
 }
