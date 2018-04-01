@@ -28,3 +28,9 @@ function init(){
         deck.appendChild(li);
     }
 }
+
+for(var i=0; i< card_array.length; i++){
+    card_array[i].addEventListener('click', function(){
+        console.log("openCard");
+    });
+}
