@@ -29,11 +29,24 @@ function init() {
         var icon = shuffle_cards[i].querySelector('i');
         li.id = icon.classList[1];
         deck.appendChild(li);
+        shuffle_cards[i].classList.add("show", "open");
     }
 }
 
 function openCard() {
-    displayCard(this)
+    if(list_open_cards.length < 2 ){ 
+        displayCard(this);
+        if(list_open_cards.length === 0){
+            list_open_cards.push(this);
+         }else if(list_open_cards.length === 1){
+            list_open_cards.push(this);
+            if(list_open_cards[0].id === list_open_cards[1].id){
+                console.log("matched");
+            }else{
+              console.log("unmatched");
+            }
+        }
+    }
 }
 
 function displayCard(card){
