@@ -29,7 +29,7 @@ function init() {
         var icon = shuffle_cards[i].querySelector('i');
         li.id = icon.classList[1];
         deck.appendChild(li);
-        shuffle_cards[i].classList.add("show", "open");
+        shuffle_cards[i].classList.remove("show", "open", "match", "disabled");
     }
 }
 
@@ -41,9 +41,9 @@ function openCard() {
          }else if(list_open_cards.length === 1){
             list_open_cards.push(this);
             if(list_open_cards[0].id === list_open_cards[1].id){
-                console.log("matched");
+                matched();
             }else{
-              console.log("unmatched");
+              unmatched();
             }
         }
     }
@@ -52,7 +52,24 @@ function openCard() {
 function displayCard(card){
     card.classList.toggle('show');
     card.classList.toggle('open');
- }
+}
+
+function matched(){
+    list_open_cards[0].classList.add("match", "disabled");
+    list_open_cards[1].classList.add("match", "disabled");
+    list_open_cards = [];
+}
+
+function unmatched(){
+    list_open_cards[0].classList.add("unmatched");
+    list_open_cards[1].classList.add("unmatched");
+
+    setTimeout(function(){
+        list_open_cards[0].classList.remove("show", "open", "unmatched");
+        list_open_cards[1].classList.remove("show", "open", "unmatched");
+        list_open_cards = [];
+    },1100);
+}
 
 for (var i = 0; i < card_array.length; i++) {
     card_array[i].addEventListener('click', openCard);

@@ -85,6 +85,11 @@ h1 {
 	pointer-events: none;
 }
 
+.deck .card.unmatched {
+	animation: shake 0.65s; 
+	background: rgb(226,4,59);
+}
+
 /*
  * Styles for the Score Panel
  */
@@ -111,3 +116,17 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/* animation for shake unmatched card */
+@keyframes shake {
+    0% { transform: translate(0px, 0px);} 
+    15% { transform: translate(9px, 0px);}
+    30% { transform: translate(-9px, 0px);} 
+    45% { transform: translate(9px, 0px);}
+    60% { transform: translate(-9px, 0px);}
+    75% { transform: translate(9px, 0px);}
+    90% { transform: translate(-9px, 0px);}
+    100% { transform: translate(0px, 0px);}
+}
+
+
