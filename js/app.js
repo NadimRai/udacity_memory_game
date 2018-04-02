@@ -1,6 +1,8 @@
 let card_array = [].slice.call(document.querySelectorAll(".card"));
 let deck = document.querySelector('.deck');
 
+let list_open_cards = [];
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -18,19 +20,27 @@ function shuffle(array) {
 }
 
 window.onload = init();
-function init(){
+
+function init() {
     var shuffle_cards = shuffle(card_array);
-    
-    for (var i= 0; i < shuffle_cards.length; i++){ 
+
+    for (var i = 0; i < shuffle_cards.length; i++) {
         var li = shuffle_cards[i]
         var icon = shuffle_cards[i].querySelector('i');
-        li.id=icon.classList[1];
+        li.id = icon.classList[1];
         deck.appendChild(li);
     }
 }
 
-for(var i=0; i< card_array.length; i++){
-    card_array[i].addEventListener('click', function(){
-        console.log("openCard");
-    });
+function openCard() {
+    displayCard(this)
+}
+
+function displayCard(card){
+    card.classList.toggle('show');
+    card.classList.toggle('open');
+ }
+
+for (var i = 0; i < card_array.length; i++) {
+    card_array[i].addEventListener('click', openCard);
 }
