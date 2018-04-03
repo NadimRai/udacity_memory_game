@@ -3,9 +3,11 @@ let deck = document.querySelector('.deck');
 let modal = document.querySelector('#completeModal');
 let start_again = document.querySelector('.start_again');
 let star_rating = document.querySelector('.star_rating');
-
+let move = document.querySelector(".moves");
 let list_open_cards = [];
 let match_counter = 0;
+let move_counter = 0;
+let stars = '';
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -35,6 +37,9 @@ function init() {
         deck.appendChild(li);
         shuffle_cards[i].classList.remove("show", "open", "match", "disabled");
     }
+
+    move_counter = 0;
+    move.innerHTML = move_counter;
 }
 
 function openCard() {
@@ -44,6 +49,7 @@ function openCard() {
             list_open_cards.push(this);
          }else if(list_open_cards.length === 1){
             list_open_cards.push(this);
+            moveCounter();
             if(list_open_cards[0].id === list_open_cards[1].id){
                match_counter+=2;
                 matched();
@@ -80,7 +86,20 @@ function unmatched(){
     },1100);
 }
 
+function moveCounter(){
+    move_counter++;
+    move.innerHTML = move_counter;
+    if(move_counter > 8 && move_counter <= 14){
+        stars = '<span class="star_style"><i class="fa fa-star"></i></span>'+'<span class="star_style"><i class="fa fa-star"></i></span>';
+    }
+    if(move_counter > 14){
+        stars = '<span class="star_style"><i class="fa fa-star"></i></span>';
+    }
+}
+
 function complete(){
+    document.getElementById("totalMove").innerHTML = move_counter;
+    star_rating.innerHTML = "Rating "+ stars;
     modal.style.display = "block";
     match_counter = 0;
 }
