@@ -1,17 +1,27 @@
+//convert node list to array
 let card_array = [].slice.call(document.querySelectorAll(".card"));
 let deck = document.querySelector('.deck');
+
+//For modal
 let modal = document.querySelector('#completeModal');
 let start_again = document.querySelector('.start_again');
 let star_rating = document.querySelector('.star_rating');
+let stars = '';
+
+//For counting moves
 let move = document.querySelector(".moves");
+let move_counter = 0;
+
+//For display time
 let timer = document.querySelector('.timer');
+let time_interval;
+
+//For restarting the game
 let restart = document.querySelector(".restart");
 
 let list_open_cards = [];
 let match_counter = 0;
-let move_counter = 0;
-let stars = '';
-let time_interval;
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -30,6 +40,7 @@ function shuffle(array) {
 
 window.onload = init();
 
+//function for starting game
 function init() {
     var shuffle_cards = shuffle(card_array);
 
@@ -49,6 +60,7 @@ function init() {
     clearInterval(time_interval);
 }
 
+//function for checking if card matches or not
 function openCard() {
     if(list_open_cards.length < 2 ){ 
         displayCard(this);
@@ -71,18 +83,21 @@ function openCard() {
     }
 }
 
+//function for displaying clicked card
 function displayCard(card){
     card.classList.toggle('show');
     card.classList.toggle('open');
     card.classList.add('disabled');
 }
 
+//function for adding classes to matched card
 function matched(){
     list_open_cards[0].classList.add("match", "disabled");
     list_open_cards[1].classList.add("match", "disabled");
     list_open_cards = [];
 }
 
+//function for adding and removing classes to cards that do not match
 function unmatched(){
     list_open_cards[0].classList.add("unmatched");
     list_open_cards[1].classList.add("unmatched");
@@ -94,6 +109,7 @@ function unmatched(){
     },1100);
 }
 
+//function for counting moves
 function moveCounter(){
     move_counter++;
     move.innerHTML = move_counter;
@@ -108,6 +124,7 @@ function moveCounter(){
     }
 }
 
+//function for timer - how many seconds
 function displayTimer(){
     time_interval = setInterval(function(){
        sec++;
@@ -117,6 +134,7 @@ function displayTimer(){
    
 } 
 
+//function for displaying modal when game is completed
 function complete(){
     document.getElementById("totalMove").innerHTML = move_counter;
     document.getElementById("totalTime").innerHTML = timer.innerHTML;
@@ -126,12 +144,15 @@ function complete(){
     clearInterval(time_interval);
 }
 
+//function for closing modal
 function close(){
     modal.style.display = "none";
     init();
 }
 
+
 start_again.addEventListener('click', close);
+
 restart.addEventListener('click', init);
 
 for (var i = 0; i < card_array.length; i++) {

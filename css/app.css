@@ -140,7 +140,6 @@ h1 {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
     background-color: #fefefe;
     margin: auto;
@@ -149,14 +148,14 @@ h1 {
     width: 60%;
 }
 
-.modal-text{
+.modal-text {
     width: 80%;
     margin-left: 100px;
     font-size: 2em;
     font-family: 'Indie Flower', cursive,sans-serif;
 }
 
-.start_again{
+.start_again {
     cursor: pointer;
     border: 1px solid rgb(187, 186, 186);
     text-align: center;
@@ -167,7 +166,7 @@ h1 {
     font-size: 0.8em;
 }
 
-.star_style{
+.star_style {
     color:  #feda68;
 }
 /** End of Modal **/
