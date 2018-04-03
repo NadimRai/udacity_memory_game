@@ -2,7 +2,7 @@ let card_array = [].slice.call(document.querySelectorAll(".card"));
 let deck = document.querySelector('.deck');
 
 let list_open_cards = [];
-
+let match_counter = 0;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -41,7 +41,11 @@ function openCard() {
          }else if(list_open_cards.length === 1){
             list_open_cards.push(this);
             if(list_open_cards[0].id === list_open_cards[1].id){
+               match_counter+=2;
                 matched();
+                if(match_counter === card_array.length){
+                    console.log("complete");
+                }
             }else{
               unmatched();
             }

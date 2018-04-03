@@ -76,6 +76,7 @@ h1 {
 }
 
 .deck .card.match {
+    animation: pop 0.5s;
     cursor: default;
     background: #02ccba;
     font-size: 33px;
@@ -129,4 +130,7 @@ h1 {
     100% { transform: translate(0px, 0px);}
 }
 
-
+@keyframes pop {
+    0% {  transform: scale(0.5); }
+    100% {  transform: scale(1); }
+}
