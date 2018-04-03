@@ -4,6 +4,7 @@ let modal = document.querySelector('#completeModal');
 let start_again = document.querySelector('.start_again');
 let star_rating = document.querySelector('.star_rating');
 let move = document.querySelector(".moves");
+let timer = document.querySelector('.timer');
 let list_open_cards = [];
 let match_counter = 0;
 let move_counter = 0;
@@ -40,6 +41,8 @@ function init() {
 
     move_counter = 0;
     move.innerHTML = move_counter;
+    sec = 0;
+    timer.innerHTML = 'time';
 }
 
 function openCard() {
@@ -54,7 +57,7 @@ function openCard() {
                match_counter+=2;
                 matched();
                 if(match_counter === card_array.length){
-                    console.log("complete");
+                    clearInterval(time_interval);
                     complete();
                 }
             }else{
@@ -67,6 +70,7 @@ function openCard() {
 function displayCard(card){
     card.classList.toggle('show');
     card.classList.toggle('open');
+    card.classList.add('disabled');
 }
 
 function matched(){
@@ -80,8 +84,8 @@ function unmatched(){
     list_open_cards[1].classList.add("unmatched");
 
     setTimeout(function(){
-        list_open_cards[0].classList.remove("show", "open", "unmatched");
-        list_open_cards[1].classList.remove("show", "open", "unmatched");
+        list_open_cards[0].classList.remove("show", "open", "unmatched","disabled");
+        list_open_cards[1].classList.remove("show", "open", "unmatched","disabled");
         list_open_cards = [];
     },1100);
 }
@@ -89,6 +93,9 @@ function unmatched(){
 function moveCounter(){
     move_counter++;
     move.innerHTML = move_counter;
+    if(move_counter === 1){
+        displayTimer();
+    }
     if(move_counter > 8 && move_counter <= 14){
         stars = '<span class="star_style"><i class="fa fa-star"></i></span>'+'<span class="star_style"><i class="fa fa-star"></i></span>';
     }
@@ -97,11 +104,22 @@ function moveCounter(){
     }
 }
 
+function displayTimer(){
+    time_interval = setInterval(function(){
+       sec++;
+       timer.innerHTML = sec+"secs";
+       
+   },1000);
+   
+} 
+
 function complete(){
     document.getElementById("totalMove").innerHTML = move_counter;
+    document.getElementById("totalTime").innerHTML = timer.innerHTML;
     star_rating.innerHTML = "Rating "+ stars;
     modal.style.display = "block";
     match_counter = 0;
+    clearInterval(time_interval);
 }
 
 function close(){
