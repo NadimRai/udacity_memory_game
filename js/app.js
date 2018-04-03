@@ -5,11 +5,13 @@ let start_again = document.querySelector('.start_again');
 let star_rating = document.querySelector('.star_rating');
 let move = document.querySelector(".moves");
 let timer = document.querySelector('.timer');
+let restart = document.querySelector(".restart");
+
 let list_open_cards = [];
 let match_counter = 0;
 let move_counter = 0;
 let stars = '';
-
+let time_interval;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -40,9 +42,11 @@ function init() {
     }
 
     move_counter = 0;
+    match_counter = 0;
     move.innerHTML = move_counter;
     sec = 0;
     timer.innerHTML = 'time';
+    clearInterval(time_interval);
 }
 
 function openCard() {
@@ -128,6 +132,7 @@ function close(){
 }
 
 start_again.addEventListener('click', close);
+restart.addEventListener('click', init);
 
 for (var i = 0; i < card_array.length; i++) {
     card_array[i].addEventListener('click', openCard);
