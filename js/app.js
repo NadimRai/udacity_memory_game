@@ -1,8 +1,12 @@
 let card_array = [].slice.call(document.querySelectorAll(".card"));
 let deck = document.querySelector('.deck');
+let modal = document.querySelector('#completeModal');
+let start_again = document.querySelector('.start_again');
+let star_rating = document.querySelector('.star_rating');
 
 let list_open_cards = [];
 let match_counter = 0;
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -45,6 +49,7 @@ function openCard() {
                 matched();
                 if(match_counter === card_array.length){
                     console.log("complete");
+                    complete();
                 }
             }else{
               unmatched();
@@ -74,6 +79,18 @@ function unmatched(){
         list_open_cards = [];
     },1100);
 }
+
+function complete(){
+    modal.style.display = "block";
+    match_counter = 0;
+}
+
+function close(){
+    modal.style.display = "none";
+    init();
+}
+
+start_again.addEventListener('click', close);
 
 for (var i = 0; i < card_array.length; i++) {
     card_array[i].addEventListener('click', openCard);

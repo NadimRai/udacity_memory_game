@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -79,6 +80,26 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+    </div>
+
+    <!-- Complete Modal -->
+    <div id="completeModal" class="modal">  
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-text">
+                <span>You did it!!!</span>
+                <i class="em em-trophy"></i>
+                <i class="em em-clap"></i>
+                <i class="em em-clap"></i>
+                <i class="em em-clap"></i>
+
+                <p>You completed the game in <span id="totalMove"></span> move(s) 
+                    in <span id="totalTime"></span> 
+                </p>
+                <p><span class="star_rating"></span> </p>
+                <p><span class="start_again">Start Again</span></p>
+            </div> 
+        </div>
     </div>
 
     <script src="js/app.js"></script>
