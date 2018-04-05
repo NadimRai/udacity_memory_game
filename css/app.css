@@ -166,8 +166,13 @@ h1 {
     font-size: 0.8em;
 }
 
+.fa-star,
 .star_style {
     color:  #feda68;
+}
+
+.fa-star{
+    font-size: 22px;
 }
 /** End of Modal **/
 

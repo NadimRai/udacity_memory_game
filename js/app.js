@@ -128,9 +128,11 @@ function moveCounter(){
     }
     if(move_counter > 8 && move_counter <= 14){
         stars = '<span class="star_style"><i class="fa fa-star"></i></span>'+'<span class="star_style"><i class="fa fa-star"></i></span>';
+        star_rating_board.innerHTML = stars;
     }
     if(move_counter > 14){
         stars = '<span class="star_style"><i class="fa fa-star"></i></span>';
+        star_rating_board.innerHTML = stars;
     }
 }
 
