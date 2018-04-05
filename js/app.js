@@ -5,7 +5,7 @@ let deck = document.querySelector('.deck');
 //For modal
 let modal = document.querySelector('#completeModal');
 let start_again = document.querySelector('.start_again');
-let star_rating = document.querySelector('.star_rating');
+let star_rating_modal = document.querySelector('.star_rating');
 let stars = '';
 
 //For counting moves
@@ -22,7 +22,7 @@ let restart = document.querySelector(".restart");
 let list_open_cards = [];
 let match_counter = 0;
 
-
+let star_rating_board = document.querySelector('.stars');
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -50,6 +50,15 @@ function init() {
         li.id = icon.classList[1];
         deck.appendChild(li);
         shuffle_cards[i].classList.remove("show", "open", "match", "disabled");
+    }
+
+    star_rating_board.innerHTML = '';
+    for(var j = 0; j < 3; j++){
+       var li = document.createElement("li");
+       var i = document.createElement("i");
+       i.setAttribute("class", "fa fa-star");
+       li.appendChild(i);
+       star_rating_board.appendChild(li);
     }
 
     list_open_cards = [];
@@ -139,7 +148,8 @@ function displayTimer(){
 function complete(){
     document.getElementById("totalMove").innerHTML = move_counter;
     document.getElementById("totalTime").innerHTML = timer.innerHTML;
-    star_rating.innerHTML = "Rating "+ stars;
+    star_rating_modal.innerHTML = "Rating "+ stars;
+    star_rating_board.innerHTML = "Rating "+ stars;
     modal.style.display = "block";
     match_counter = 0;
     clearInterval(time_interval);
