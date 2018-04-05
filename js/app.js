@@ -52,6 +52,7 @@ function init() {
         shuffle_cards[i].classList.remove("show", "open", "match", "disabled");
     }
 
+    list_open_cards = [];
     move_counter = 0;
     match_counter = 0;
     move.innerHTML = move_counter;
