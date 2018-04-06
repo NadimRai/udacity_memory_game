@@ -1,7 +1,7 @@
 # Memory Game Project
 
 This project is part of Udacity Front-End Web Developer Nanodegree Program.  
-This is wriiten in HTML,CSS and Javascript.
+This is written in HTML,CSS and Javascript.
 
 ## How To Play
 
