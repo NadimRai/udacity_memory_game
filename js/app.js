@@ -71,14 +71,15 @@ function init() {
 }
 
 //function for checking if card matches or not
-function openCard() {
+function openCard() {  
     if(list_open_cards.length < 2 ){ 
         displayCard(this);
+        moveCounter();
         if(list_open_cards.length === 0){
             list_open_cards.push(this);
          }else if(list_open_cards.length === 1){
             list_open_cards.push(this);
-            moveCounter();
+            
             if(list_open_cards[0].id === list_open_cards[1].id){
                match_counter+=2;
                 matched();
@@ -122,15 +123,15 @@ function unmatched(){
 //function for counting moves
 function moveCounter(){
     move_counter++;
-    move.innerHTML = move_counter;
     if(move_counter === 1){
         displayTimer();
     }
-    if(move_counter > 8 && move_counter <= 14){
+    move.innerHTML = move_counter;
+    if(move_counter > 16 && move_counter <= 24){
         stars = '<span class="star_style"><i class="fa fa-star"></i></span>'+'<span class="star_style"><i class="fa fa-star"></i></span>';
         star_rating_board.innerHTML = stars;
     }
-    if(move_counter > 14){
+    if(move_counter > 24){
         stars = '<span class="star_style"><i class="fa fa-star"></i></span>';
         star_rating_board.innerHTML = stars;
     }
