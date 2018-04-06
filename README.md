@@ -1,20 +1,16 @@
 # Memory Game Project
 
-## Table of Contents
+This project is part of Udacity Front-End Web Developer Nanodegree Program.  
+This is wriiten in HTML,CSS and Javascript.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## How To Play
 
-## Instructions
+The game board consists of randomly placed 8 different pairs of face down cards.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+* Click on a card to reveal the card.
+* Click on another card to reveal it as well. 
+* If two cards match,they will remain revealed otherwise they will be face down again.
+* Once all the cards are matched, game ends and pop up window appears with information of how many moves you took to complete the game and your rating aka your bragging rights.
 
-To get started, open `js/app.js` and start building out the app's functionality
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
